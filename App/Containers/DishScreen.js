@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { ScrollView, FlatList, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import DishItem from '../Components/dish-screen/DishItem'
+import SuggestDish from '../Components/dish-screen/SuggestDish'
+
 // Actions
 import DishActions from '../Redux/DishRedux'
 // Styles
@@ -26,8 +28,12 @@ class DishScreen extends Component {
   render () {
     return (
       <ScrollView style={styles.container}>
-        <View style= {styles.line}></View>
-        <Text style= {styles.label}>BỘ SƯU TẬP</Text>
+        <Text style= {styles.suggestLabel}>Ăn gì hôm nay?</Text>
+        <SuggestDish listDish= {this.state.listDish}/>
+        <View style = {{justifyContent: 'center'}}>
+          <View style= {styles.line}></View>
+          <Text style= {styles.label}>BỘ SƯU TẬP</Text>
+        </View>
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.state.listDish}

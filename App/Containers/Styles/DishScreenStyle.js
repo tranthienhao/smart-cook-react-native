@@ -3,6 +3,11 @@ import { ApplicationStyles } from '../../Themes/'
 import {Metrics, Colors} from '../../Themes'
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
+  suggestLabel:{
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    color: Colors.primary,
+  },
   label:{
     fontWeight: 'bold',
     padding: Metrics.baseMargin,
@@ -17,6 +22,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary,
     alignSelf: 'center',
     position: 'absolute',
-    marginTop: Metrics.doubleBaseMargin
+    flex: 1,
+    justifyContent: 'center',
   }
 })

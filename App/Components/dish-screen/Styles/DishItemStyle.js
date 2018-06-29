@@ -36,7 +36,8 @@ export default StyleSheet.create({
     alignSelf:'flex-end',
     color: 'black',
     backgroundColor:'white',
-    padding: Metrics.baseMargin
+    padding: Metrics.baseMargin,
+    fontStyle: 'italic'
   },
   line:{
     margin: Metrics.baseMargin,
@@ -45,6 +46,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary,
     alignSelf: 'center',
     position: 'absolute',
-    bottom: Metrics.baseMargin
+    bottom: Metrics.baseMargin,
   }
 })
