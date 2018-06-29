@@ -97,6 +97,7 @@ const PrimaryNav = StackNavigator({
           headerTitle: (
             <Image style= {styles.headerImage} source={require('../Images/logo.png')}/>
           ),
+          headerTintColor: 'white',
           headerStyle: styles.header
         }
       }) 

@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+
+import DishDetailContent from '../Components/dish-detail-screen/DishDetailContent'
 
 // Styles
 import styles from './Styles/DishDetailScreenStyle'
 
 class DishDetailScreen extends Component {
   render () {
+    const data = this.props.navigation.getParam('data')
     return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>DishDetailScreen</Text>
-        </KeyboardAvoidingView>
+      <ScrollView>
+        <Image style= {styles.image} source={{uri: data.Image}}></Image>
+        <View style= {styles.infoView}>
+          <Text style= {styles.name}>{data.Name}</Text>
+          <Text style= {styles.category}>{data.CategoryName}</Text>
+          <Text style= {styles.cookingTime}>{data.CookingTime}</Text>
+          <Text style= {styles.description}>{data.Description}</Text>
+        </View>
+        <DishDetailContent data={data}/>
       </ScrollView>
     )
   }

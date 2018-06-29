@@ -31,7 +31,9 @@ export default class SuggestDishItem extends Component {
             />
         );
     }
-
+    clickItem(){
+        this.props.nav.navigate('DishDetailScreen', {data: this.props.data})
+    }
     render () {
         const { data: { Name, Description, CookingTime }} = this.props;
 
@@ -48,7 +50,7 @@ export default class SuggestDishItem extends Component {
             <TouchableOpacity
               activeOpacity={1}
               style={styles.slideInnerContainer}
-              onPress={() => { alert(`You've clicked '${Name}'`); }}
+              onPress={this.clickItem.bind(this)}
               > 
                 <View style={styles.shadow} />
                 <View style={[styles.imageContainer]}>

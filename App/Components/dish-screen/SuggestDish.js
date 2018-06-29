@@ -6,34 +6,12 @@ import styles from './Styles/SuggestDishStyle'
 import { sliderWidth, itemWidth } from './Styles/SuggestDishItemStyle';
 import Carousel from 'react-native-snap-carousel';
 
-const ENTRIES1 = [
-   {
-     title: 'Beautiful and dramatic Antelope Canyon',
-     subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-     illustration: 'https://i.imgur.com/UYiroysl.jpg'
-   }, {
-     title: 'Earlier this morning, NYC',
-     subtitle: 'Lorem ipsum dolor sit amet',
-     illustration: 'https://i.imgur.com/UPrs1EWl.jpg'
-   }, {
-     title: 'White Pocket Sunset',
-     subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-     illustration: 'https://i.imgur.com/MABUbpDl.jpg'
-   }, {
-     title: 'Acrocorinth, Greece',
-     subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-     illustration: 'https://i.imgur.com/KZsmUi2l.jpg'
-   }, {
-     title: 'The lone tree, majestic landscape of New Zealand',
-     subtitle: 'Lorem ipsum dolor sit amet',
-     illustration: 'https://i.imgur.com/2nCt3Sbl.jpg'
-   },
-]
 export default class SuggestDish extends Component {
-  _renderItemWithParallax ({item, index}, parallaxProps) {
+  _renderItemWithParallax ({item}, parallaxProps) {
       return (
         <SuggestDishItem
           data={item}
+          nav={this.props.nav}
           parallax={true}
           parallaxProps={parallaxProps}
         />
@@ -44,7 +22,7 @@ export default class SuggestDish extends Component {
       <View style={styles.container}>
         <Carousel
           data={this.props.listDish}
-          renderItem={this._renderItemWithParallax}
+          renderItem={this._renderItemWithParallax.bind(this)}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={true}

@@ -18,7 +18,7 @@ class DishScreen extends Component {
   }
   renderItem({item}){
     return(
-      <DishItem dish={item} />
+      <DishItem dish={item} nav= {this.props.navigation}/>
     )
   }
 
@@ -29,7 +29,7 @@ class DishScreen extends Component {
     return (
       <ScrollView style={styles.container}>
         <Text style= {styles.suggestLabel}>Ăn gì hôm nay?</Text>
-        <SuggestDish listDish= {this.state.listDish}/>
+        <SuggestDish listDish= {this.state.listDish} nav = {this.props.navigation}/>
         <View style = {{justifyContent: 'center'}}>
           <View style= {styles.line}></View>
           <Text style= {styles.label}>BỘ SƯU TẬP</Text>
