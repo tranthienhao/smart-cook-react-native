@@ -1,32 +1,69 @@
-import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
-import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
+import React, { Component } from "react";
+import { ScrollView, FlatList, Text, View } from "react-native";
+import { connect } from "react-redux";
+import MenuItem from "../Components/menu-screen/MenuItem";
+// Actions
+import MenuActions from "../Redux/MenuRedux";
 // Styles
-import styles from './Styles/MenuScreenStyle'
+import styles from "./Styles/MenuScreenStyle";
 
 class MenuScreen extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listMenu: []
+    };
+  }
+  renderItem({ item }) {
+    return <MenuItem Menu={item} nav={this.props.navigation} />;
+  }
+
+  keyExtractor = (item, id) => "" + id;
+
+  oneScreensWorth = 20;
+  render() {
     return (
       <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>MenuScreen</Text>
-        </KeyboardAvoidingView>
+        <View style={{ justifyContent: "center" }}>
+          <View style={styles.line} />
+          <Text style={styles.label}>THỰC ĐƠN GỢI Ý</Text>
+        </View>
+        <FlatList
+          contentContainerStyle={styles.listContent}
+          data={this.state.listMenu}
+          renderItem={this.renderItem.bind(this)}
+          keyExtractor={this.keyExtractor}
+          initialNumToRender={this.oneScreensWorth}
+        />
       </ScrollView>
-    )
+    );
+  }
+  componentDidMount() {
+    this.props.getMenu();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.fetching) {
+      this.setState({
+        listMenu: [...this.state.listMenu, ...this.props.listMenu]
+      });
+    }
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-  }
-}
+    listMenu: state.menu.listMenu,
+    fetching: state.menu.fetching
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-  }
-}
+    getMenu: () => dispatch(MenuActions.menuRequest())
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuScreen);

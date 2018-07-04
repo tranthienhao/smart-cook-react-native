@@ -7,11 +7,13 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { DishTypes } from '../Redux/DishRedux'
 import { CategoryTypes } from '../Redux/CategoryRedux'
+import { MenuTypes } from '../Redux/MenuRedux'
 
 /* ------------- Sagas ------------- */
 
 import { getDish } from './DishSagas'
 import { getCategory } from './CategorySagas'
+import { getMenu } from './MenuSagas'
 
 /* ------------- API ------------- */
 
@@ -23,8 +25,8 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 export default function * root () {
   yield all([
-
     takeLatest(DishTypes.DISH_REQUEST, getDish, api),
+    takeLatest(MenuTypes.MENU_REQUEST, getMenu, api),
     takeLatest(CategoryTypes.CATEGORY_REQUEST, getCategory, api)
   ])
 }
