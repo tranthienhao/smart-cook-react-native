@@ -5,7 +5,7 @@ import styles from './Styles/DishItemStyle'
 
 export default class DishItem extends Component {
   clickItem(){
-    this.props.nav.navigate('DishDetailScreen', {data: this.props.dish})
+    this.props.nav.navigate('DishDetailScreen', {data: this.props.dish, HeaderTitle: this.props.dish.Name.toUpperCase()})
   }
   render () {
       return (

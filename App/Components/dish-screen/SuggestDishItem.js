@@ -32,7 +32,7 @@ export default class SuggestDishItem extends Component {
         );
     }
     clickItem(){
-        this.props.nav.navigate('DishDetailScreen', {data: this.props.data})
+        this.props.nav.navigate('DishDetailScreen', { data: this.props.data, HeaderTitle: this.props.data.Name.toUpperCase()})
     }
     render () {
         const { data: { Name, Description, CookingTime }} = this.props;

@@ -9,15 +9,11 @@ const create = (baseURL = 'https://tranthjenhao.000webhostapp.com/api/') => {
   })
 
   const getDish = () => api.get('get_random_foods.php')
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getCategory = () => api.get('get_categories.php')
 
   return {
     getDish,
-    getRoot,
-    getRate,
-    getUser
+    getCategory,
   }
 }
 

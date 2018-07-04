@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './Styles/DishDetailContentStyle'
 import ListStep from './ListStep'
 import ListIngredient from './ListIngredient'
+import Video from './Video'
 export default class DishDetailContent extends Component {
   constructor(props){
     super(props)
@@ -25,7 +26,7 @@ export default class DishDetailContent extends Component {
         )
         break
       case 'Video':
-        return null
+        return <Video />
         break
     }
   }
